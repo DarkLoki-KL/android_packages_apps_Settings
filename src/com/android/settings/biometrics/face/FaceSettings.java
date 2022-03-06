@@ -331,6 +331,7 @@ public class FaceSettings extends DashboardFragment {
         controllers.add(new FaceSettingsRemoveButtonPreferenceController(context));
         controllers.add(new FaceSettingsConfirmPreferenceController(context));
         controllers.add(new FaceSettingsEnrollButtonPreferenceController(context));
+        controllers.add(new FaceSettingsRedoPreferenceController(context));
         return controllers;
     }
 
@@ -371,7 +372,10 @@ public class FaceSettings extends DashboardFragment {
                     if (!isAttentionSupported(context)) {
                         keys.add(FaceSettingsAttentionPreferenceController.KEY);
                     }
-
+                    if (FaceUtils.isFaceUnlockSupported()) {
+                        keys.add("security_settings_face_unlock_category");
+                    }
+                    
                     return keys;
                 }
 
